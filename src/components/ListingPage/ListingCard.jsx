@@ -28,7 +28,7 @@ export default function ListingCard(props) {
                     <div>{data.title}</div>
                     <div style={{ display: "flex" }}>
                         <EditIcon></EditIcon>
-                        <DeleteIcon onClick={handleDelete} style={{ color: "red", marginLeft: "5px" }}></DeleteIcon>
+                        <DeleteIcon onClick={() => handleDelete(data.id)} style={{ color: "red", marginLeft: "5px" }}></DeleteIcon>
                     </div>
                 </div>
             </Paper>

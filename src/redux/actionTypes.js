@@ -3,4 +3,5 @@ export const SEARCH_RESULTS_FAILURE = 'SEARCH_RESULTS_FAILURE';
 export const ON_DROP = "ON_DROP"
 export const SAVE_ORDER = 'SAVE_ORDER'
 export const CANCEL_ORDER = "CANCEL_ORDER"
+export const DELETE_IMAGE = 'DELETE_IMAGE'
 

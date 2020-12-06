@@ -4,6 +4,7 @@ import {
     ON_DROP,
     SAVE_ORDER,
     CANCEL_ORDER,
+    DELETE_IMAGE
 } from './actionTypes';
 
 const initialState = {
@@ -49,6 +50,13 @@ export default function reducer(state = initialState, action) {
                 searchResults: state.oldData,
                 oldData: [],
                 saveDialog: false
+            }
+
+        case DELETE_IMAGE:
+            let data = state.searchResults.filter((item) => item.id !== action.payload)
+            return {
+                ...state,
+                searchResults: data,
             }
 
         default:

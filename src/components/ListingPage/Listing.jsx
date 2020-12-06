@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import ListingCard from "./ListingCard";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { getSearchResults, onDrop, saveOrder, cancelOrder } from '../../redux/actions';
+import { getSearchResults, onDrop, saveOrder, cancelOrder, deleteImage } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from '@material-ui/core/Modal';
 
@@ -20,7 +20,9 @@ export default function Listing() {
 
     const saveDialog = useSelector(state => state.saveDialog);
 
-    const [open, setOpen] = React.useState(false)
+    const [open, setOpen] = useState(false)
+
+    const [deleteId, setDeleteId] = useState("")
 
     const classes = useStyles();
     const dispatch = useDispatch()
@@ -39,13 +41,18 @@ export default function Listing() {
         dispatch(onDrop(items));
     }
 
-    const handleOpen = () => {
-        console.log("handleOpen");
+    const handleOpen = (id) => {
         setOpen(true);
+        setDeleteId(id)
     };
 
     const handleClose = () => {
         setOpen(false);
+    };
+
+    const handleDelete = () => {
+        setOpen(false);
+        dispatch(deleteImage(deleteId))
     };
 
     return (
@@ -96,10 +103,10 @@ export default function Listing() {
                     <div style={{ margin: "10px" }}>Are you sure you want to delete?</div>
                     <div style={{ display: "flex", justifyContent: "space-between", margin: "10px", paddingBottom: "10px" }}>
                         <Button variant="contained" onClick={handleClose} color="primary">Cancel</Button>
-                        <Button variant="contained" onClick={deleteImage} color="primary">Confirm</Button>
+                        <Button variant="contained" onClick={handleDelete} color="primary">Confirm</Button>
                     </div>
                 </div>
             </Modal>
-        </div>
+        </div >
     )
 }
