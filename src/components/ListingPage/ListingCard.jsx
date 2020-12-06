@@ -2,6 +2,7 @@ import React from 'react'
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles'
+import { Link } from "react-router-dom"
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
@@ -25,11 +26,11 @@ export default function ListingCard(props) {
             <Paper className={classes.paper}>
                 <img {...provided.dragHandleProps} style={{ width: "100%" }} src={data.imageURL} alt="card"></img>
                 <div style={{ display: "flex", justifyContent: "space-between", marginTop: "10px", alignItems: "center" }}>
-                    <div>{data.title}</div>
-                    <div style={{ display: "flex" }}>
+                    <Link to={`/details/${data.id}`}>{data.title}</Link>
+                    <Link style={{ display: "flex" }}>
                         <EditIcon></EditIcon>
                         <DeleteIcon onClick={() => handleDelete(data.id)} style={{ color: "red", marginLeft: "5px" }}></DeleteIcon>
-                    </div>
+                    </Link>
                 </div>
             </Paper>
         </Grid>
