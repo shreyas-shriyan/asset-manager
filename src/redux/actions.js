@@ -3,7 +3,8 @@ import {
     SEARCH_RESULTS_FAILURE,
     ON_DROP,
     SAVE_ORDER,
-    CANCEL_ORDER
+    CANCEL_ORDER,
+    DELETE_IMAGE
 } from './actionTypes';
 
 import axios from 'axios';
@@ -30,6 +31,11 @@ export const saveOrder = (payload) => ({
 
 export const cancelOrder = (payload) => ({
     type: CANCEL_ORDER,
+    payload
+});
+
+export const deleteImage = (payload) => ({
+    type: DELETE_IMAGE,
     payload
 });
 
