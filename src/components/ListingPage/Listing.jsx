@@ -2,17 +2,13 @@ import React, { useEffect, useState } from 'react'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import ListingCard from "./ListingCard";
-import makeStyles from "@material-ui/core/styles/makeStyles";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { getSearchResults, onDrop, saveOrder, cancelOrder, deleteImage } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Modal from '@material-ui/core/Modal';
+import styles from "./listing.module.css"
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    }
-}));
 
 export default function Listing() {
 
@@ -24,8 +20,8 @@ export default function Listing() {
 
     const [deleteId, setDeleteId] = useState("")
 
-    const classes = useStyles();
     const dispatch = useDispatch()
+    let history = useHistory()
 
     useEffect(() => {
         dispatch(getSearchResults())
@@ -57,6 +53,10 @@ export default function Listing() {
 
     return (
         <div>
+            <div className={styles.addButtonContainer} >
+                <Button variant="contained" color="primary" onClick={() => history.push("/addImage")} >Add Image</Button>
+            </div>
+
             <DragDropContext onDragEnd={handleOnDragEnd}>
                 <Droppable droppableId="droppable">
                     {(provided) => (
@@ -84,7 +84,7 @@ export default function Listing() {
 
             {saveDialog &&
                 <div style={{ position: "fixed", bottom: "30px", width: "100%" }}>
-                    <div style={{ margin: "auto", display: "flex", justifyContent: "space-between", alignItems: "center", width: "20vw", backgroundColor: "orange", padding: "10px", borderRadius: "10px" }}>
+                    <div className={styles.savePopup}>
                         <div>Save order?</div>
                         <Button variant="contained" onClick={() => dispatch(saveOrder())} color="primary">Yes</Button>
                         <Button variant="contained" onClick={() => dispatch(cancelOrder())} color="primary">No</Button>
