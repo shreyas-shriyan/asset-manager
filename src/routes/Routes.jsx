@@ -4,6 +4,7 @@ import Listing from '../components/ListingPage/Listing'
 import Navbar from "../components/Navbar"
 import Details from "../components/DetailsPage/Details"
 import EditPage from "../components/EditPage/EditPage"
+import AddPage from "../components/AddPage/AddPage"
 
 export default function Routes() {
     return (
@@ -13,6 +14,7 @@ export default function Routes() {
                 <Route path="/" exact render={(props) => <Listing {...props}></Listing>}></Route>
                 <Route path="/details/:id" exact render={(props) => <Details {...props} ></Details>}></Route>
                 <Route path="/edit/:id" exact render={(props) => <EditPage {...props}></EditPage>}></Route>
+                <Route path="/addImage" exact render={(props) => <AddPage {...props}></AddPage>}></Route>
                 <Route path="*" render={() => <h1>Page Not Found</h1>}></Route>
             </Switch>
         </div>

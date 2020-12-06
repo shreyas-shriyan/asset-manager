@@ -1,0 +1,19 @@
+.savePopup{
+    background-color: orange;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    width: 20vw;
+}
+
+.addButtonContainer {
+    display: flex;
+    justify-content:flex-end;
+    padding: 10px;
+    border-bottom : 1px solid black;
+    margin:0 10%;
+}
+

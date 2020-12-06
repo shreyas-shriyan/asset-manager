@@ -28,10 +28,10 @@ export default function ListingCard(props) {
                 <img {...provided.dragHandleProps} style={{ width: "100%" }} src={data.imageURL} alt="card"></img>
                 <div style={{ display: "flex", justifyContent: "space-between", marginTop: "10px", alignItems: "center" }}>
                     <Link to={`/details/${data.id}`}>{data.title}</Link>
-                    <Link style={{ display: "flex" }}>
+                    <div style={{ display: "flex" }}>
                         <EditIcon onClick={() => history.push(`/edit/${data.id}`)}></EditIcon>
                         <DeleteIcon onClick={() => handleDelete(data.id)} style={{ color: "red", marginLeft: "5px" }}></DeleteIcon>
-                    </Link>
+                    </div>
                 </div>
             </Paper>
         </Grid>
