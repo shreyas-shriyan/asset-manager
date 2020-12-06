@@ -16,20 +16,19 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ListingCard(props) {
 
-    let { data, provided } = props;
+    let { data, provided, handleDelete } = props;
     const classes = useStyles();
 
     return (
-        <Grid item sm={12} ref={provided.innerRef}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps} style={{ padding: "7px", ...provided.draggableProps.style }}>
+        <Grid item sm={12} ref={provided.innerRef} {...provided.draggableProps}
+            style={{ padding: "7px", ...provided.draggableProps.style }}>
             <Paper className={classes.paper}>
-                {console.log(data)}
-                <img style={{ width: "100%" }} src={data.imageURL} alt="card"></img>
-                <div style={{ display: "flex", justifyContent: "space-between", marginTop: "10px" }}>
+                <img {...provided.dragHandleProps} style={{ width: "100%" }} src={data.imageURL} alt="card"></img>
+                <div style={{ display: "flex", justifyContent: "space-between", marginTop: "10px", alignItems: "center" }}>
                     <div>{data.title}</div>
                     <div style={{ display: "flex" }}>
                         <EditIcon></EditIcon>
+                        <DeleteIcon onClick={handleDelete} style={{ color: "red", marginLeft: "5px" }}></DeleteIcon>
                     </div>
                 </div>
             </Paper>
