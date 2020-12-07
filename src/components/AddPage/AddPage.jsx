@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Button from "@material-ui/core/Button"
 import { useHistory } from "react-router-dom"
-import { useSelector } from "react-redux"
 import DeleteIcon from '@material-ui/icons/Delete';
 import axios from "axios"
 import ImageUploader from "react-images-upload";
@@ -12,8 +11,6 @@ export default function AddPage(props) {
     let [description, setDescription] = useState("")
     let [tags, setTags] = useState("")
     let [picture, setPicture] = useState([])
-
-    let data = useSelector((state) => state.searchResults.filter((item) => item.id === props.match.params.id)[0])
 
     //on submit
     const handleSubmit = () => {
@@ -76,6 +73,8 @@ export default function AddPage(props) {
                     <div style={{ height: `${picture[0] ? "" : "200px"}`, width: "300px", border: "1px solid black", margin: "auto" }}>
                         <img src={(picture[0] && URL.createObjectURL(picture[0]))} style={{ width: "100%" }} alt="addimage" ></img>
                     </div>
+
+                    {/* image upload component */}
                     <ImageUploader
                         {...props}
                         withIcon={false}

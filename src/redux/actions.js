@@ -39,6 +39,8 @@ export const deleteImage = (payload) => ({
     payload
 });
 
+// get data from api
+
 export const getSearchResults = (data) => {
     return (dispatch) => {
         return axios({

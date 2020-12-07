@@ -22,10 +22,10 @@ export default function ListingCard(props) {
     const classes = useStyles();
 
     return (
-        <Grid item sm={12} ref={provided.innerRef} {...provided.draggableProps}
-            style={{ padding: "7px", ...provided.draggableProps.style }}>
+        <Grid item sm={12} ref={provided.innerRef} {...provided.draggableProps} style={{ padding: "7px", ...provided.draggableProps.style }}>
             <Paper className={classes.paper}>
                 <img {...provided.dragHandleProps} style={{ width: "100%" }} src={data.imageURL} alt="card"></img>
+
                 <div style={{ display: "flex", justifyContent: "space-between", marginTop: "10px", alignItems: "center" }}>
                     <Link to={`/details/${data.id}`}>{data.title}</Link>
                     <div style={{ display: "flex" }}>

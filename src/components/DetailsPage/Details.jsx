@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Button from '@material-ui/core/Button'
-import { Redirect, useHistory } from "react-router"
+import { useHistory } from "react-router"
 import styles from "./details.module.css"
 import Comment from "./Comment"
 
@@ -10,6 +10,7 @@ export default function Details(props) {
     let date = new Date(data.dateModified)
     let history = useHistory();
 
+    /* get item details */
     useEffect(() => {
         fetch(`https://5fbcebcf3f8f90001638c720.mockapi.io/api/v1/assets/${props.match.params.id}`)
             .then((res) => res.json())
@@ -27,7 +28,7 @@ export default function Details(props) {
                 <img className={styles.img} src={data.imageURL} alt="card"></img>
                 <div style={{ marginLeft: "30px" }}>
                     <div style={{ textAlign: "justify" }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</div>
-                    <div style={{ marginTop: "30px", textAlign: "left" }}>{`Uploaded on - ${date.toISOString().split("T")[0]}`}</div>
+                    <div style={{ marginTop: "30px", textAlign: "left" }}>{`Uploaded on : 22-05-1970`}</div>
                 </div>
             </div>
 

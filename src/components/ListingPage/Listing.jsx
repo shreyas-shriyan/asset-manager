@@ -27,6 +27,7 @@ export default function Listing() {
         dispatch(getSearchResults())
     }, [])
 
+    // after dropping card
     const handleOnDragEnd = (result) => {
         if (!result.destination) return;
 
@@ -57,6 +58,8 @@ export default function Listing() {
                 <Button variant="contained" color="primary" onClick={() => history.push("/addImage")} >Add Image</Button>
             </div>
 
+            {/* context for drag and drop */}
+
             <DragDropContext onDragEnd={handleOnDragEnd}>
                 <Droppable droppableId="droppable">
                     {(provided) => (
@@ -82,6 +85,7 @@ export default function Listing() {
                 </Droppable>
             </DragDropContext>
 
+            {/* rearrangement confirmation */}
             {saveDialog &&
                 <div style={{ position: "fixed", bottom: "30px", width: "100%" }}>
                     <div className={styles.savePopup}>
@@ -91,6 +95,8 @@ export default function Listing() {
                     </div>
                 </div>
             }
+
+            {/* deletion modal */}
             <Modal
                 open={open}
                 onClose={handleClose}
