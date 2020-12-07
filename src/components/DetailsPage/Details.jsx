@@ -7,6 +7,7 @@ import Comment from "./Comment"
 export default function Details(props) {
 
     let [data, setData] = useState({})
+    let date = new Date(data.dateModified)
     let history = useHistory();
 
     useEffect(() => {
@@ -26,7 +27,7 @@ export default function Details(props) {
                 <img className={styles.img} src={data.imageURL} alt="card"></img>
                 <div style={{ marginLeft: "30px" }}>
                     <div style={{ textAlign: "justify" }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</div>
-                    <div style={{ marginTop: "30px", textAlign: "left" }}>{`Uploaded on - ${data.dateModified}`}</div>
+                    <div style={{ marginTop: "30px", textAlign: "left" }}>{`Uploaded on - ${date.toISOString().split("T")[0]}`}</div>
                 </div>
             </div>
 
