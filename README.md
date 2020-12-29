@@ -31,3 +31,4 @@ yarn start
 - CSS
 - React
 - Redux
+- react-beautiful-dnd
